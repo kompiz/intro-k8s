@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-monolith
+  labels:
+    app: monolith
+spec:
+  containers:
+    - name: monolith
+      image: kelseyhightower/monolith:1.0.0
+      args:
+        - "-http=0.0.0.0:8080"
+        - "-health=0.0.0.0:8081"
+        - "-secret=secret"
+      ports:
+        - name: http
+          containerPort: 8080
+        - name: health
+          containerPort: 8081
+      resources:
+        limits:
+          cpu: 0.1
+          memory: "10Mi"
+      volumeMounts:
+        - mountPath: "/var/tmp/storage/"
+          name: monolith-storage
+  volumes:
+    - name: monolith-storage
+      persistentVolumeClaim:
+       claimName: monolith-storage

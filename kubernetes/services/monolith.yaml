@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: "monolith"
+spec:
+  selector:
+    app: "monolith"
+    secure: "enabled"
+  ports:
+    - name: 443-tcp
+      port: 443
+      protocol: "TCP"
+      targetPort: 8443
