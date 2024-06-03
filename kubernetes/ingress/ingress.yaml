@@ -5,26 +5,38 @@ metadata:
   namespace: 
 spec:
   rules:
-  - host: foo.k8s-dev.bar.info
+  - host: foo.k8s-dev.bar-nextgen.info
     http:
       paths:
       - backend:
-          serviceName: auth
-          servicePort: 80
+          service:
+            name: auth
+            port:
+              number: 80
         path: /login
+        pathType: Prefix
       - backend:
-          serviceName: auth
-          servicePort: 80
+          service:
+            name: auth
+            port:
+              number: 80
         path: /auth
+        pathType: Prefix
       - backend:
-          serviceName: auth
-          servicePort: 80
+          service:
+            name: auth
+            port:
+              number: 80
         path: /foo
+        pathType: Prefix
       - backend:
-          serviceName: hello
-          servicePort: 80
+          service:
+            name: hello
+            port:
+              number: 80
         path: /
+        pathType: Prefix
   tls:
   - hosts:
-    - foo-gms.k8s-dev.bar.info
+    - foo.k8s-dev.bar-nextgen.info
     secretName: wildcard-bar-domain-secret
