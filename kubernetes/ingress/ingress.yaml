@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 
+  namespace: 
+spec:
+  rules:
+  - host: foo.k8s-dev.mccs-nextgen.info
+    http:
+      paths:
+      - backend:
+          serviceName: auth
+          servicePort: 80
+        path: /login
+      - backend:
+          serviceName: auth
+          servicePort: 80
+        path: /auth
+      - backend:
+          serviceName: auth
+          servicePort: 80
+        path: /foo
+      - backend:
+          serviceName: hello
+          servicePort: 80
+        path: /
+  tls:
+  - hosts:
+    - foo-gms.k8s-dev.mccs-nextgen.info
+    secretName: wildcard-mccs-domain-secret
