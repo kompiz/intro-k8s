@@ -5,7 +5,7 @@ metadata:
   namespace: 
 spec:
   rules:
-  - host: foo.k8s-dev.mccs-nextgen.info
+  - host: foo.k8s-dev.bar.info
     http:
       paths:
       - backend:
@@ -26,5 +26,5 @@ spec:
         path: /
   tls:
   - hosts:
-    - foo-gms.k8s-dev.mccs-nextgen.info
-    secretName: wildcard-mccs-domain-secret
+    - foo-gms.k8s-dev.bar.info
+    secretName: wildcard-bar-domain-secret
