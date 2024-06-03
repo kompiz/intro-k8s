@@ -13,7 +13,6 @@ spec:
         app: hello
         track: stable
     spec:
-      selector:
       containers:
         - name: hello
           image: "kelseyhightower/hello:1.0.0"
